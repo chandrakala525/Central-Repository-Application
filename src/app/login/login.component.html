@@ -1,0 +1,51 @@
+<div class="LoginDiv">
+  <h3 class="text-center">Login</h3>
+  <form #loginForm="ngForm" (ngSubmit)="onSignIn($event)">
+    <div class="row">
+      <div class="offset-md-4 col-md-1">
+        <label>User Name:</label>
+      </div>
+      <div class="col-md-3">
+        <input type="text" 
+        name="username" 
+        required 
+        placeholder="User Name" 
+        class="form-control" 
+        ngModel
+        #username="ngModel"/>
+        <div class="alert alert-danger" *ngIf="username.touched && !username.valid">Please enter a valid Username</div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="offset-md-4 col-md-1">
+            <label>Password:</label>
+          </div>
+          <div class="col-md-3">
+        <input 
+        type="password" 
+        name="password" 
+        required 
+        placeholder="Password" 
+        class="form-control" 
+        ngModel
+        #password="ngModel"/>
+        <div class="alert alert-danger" *ngIf="password.touched && !password.valid">Please enter a valid Password</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="offset-md-5 col-md-2">
+        <input 
+        type="submit" 
+        name="submit" 
+        class="form-control btn btn-primary"
+        value="Sign In"
+        [disabled]="!loginForm.valid"/>
+      </div>
+    </div>
+    <div class="row">
+        <div class="text-center errorDisp alert alert-danger" *ngIf="errorDisplay">
+          {{errorMsg}}
+        </div>
+      </div>
+  </form>
+</div>
